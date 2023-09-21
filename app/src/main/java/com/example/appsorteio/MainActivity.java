@@ -10,30 +10,29 @@ import android.widget.TextView;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+    //criando variaveis para "conectar" com objetos XML
     private Button btPlay;
+    private TextView textResultado;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
+    protected void onCreate(Bundle savedInstanceState) { //metodo onCreate
+        super.onCreate(savedInstanceState);              //
+        setContentView(R.layout.activity_main);          //
 
-    public void Jogar(View view) {
-        TextView textResultado;
+        //relacionando widgets com objetos XML
+        btPlay = findViewById(R.id.playXML);
         textResultado = findViewById(R.id.textResultadoXML);
 
-        btPlay = (Button) view.findViewById(R.id.playXML);
-
+        //Adicionando metodo Listener para botao play
+        //em vez adicionar propriedade "onClick" no XML
         btPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int num;
-                num = new Random().nextInt(11);
-
-                textResultado.setText("Your Random Number is: " + num);
+                int num = new Random().nextInt(11);
+                textResultado.setText(Integer.toString(num));
             }
         });
+    }}
 
-    }
 
-}
